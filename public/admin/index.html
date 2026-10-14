@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Админ-панель отеля</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<main class="login" id="login">
+  <form class="login-card" id="loginForm">
+    <div class="brand">AUR<em>E</em>LIA</div>
+    <p class="muted">Вход для сотрудников</p>
+    <label>Логин<input id="lUser" autocomplete="username" required autofocus></label>
+    <label>Пароль<input id="lPass" type="password" autocomplete="current-password" required></label>
+    <div class="err" id="lErr"></div>
+    <button class="btn primary" type="submit">Войти</button>
+  </form>
+</main>
+
+<!-- APP -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <div class="brand">AUR<em>E</em>LIA</div>
+    <nav id="menu">
+      <button data-v="dash" class="on">📊 Панель</button>
+      <button data-v="bookings">🛎 Бронирования <span class="pill" id="newPill" hidden>0</span></button>
+      <button data-v="calendar">📅 Календарь</button>
+      <button data-v="rooms">🛏 Номера и цены</button>
+      <button data-v="users" data-admin>👥 Сотрудники</button>
+    </nav>
+    <div class="side-foot">
+      <div class="me"><b id="meName"></b><small id="meRole"></small></div>
+      <button class="link" id="pwBtn">Сменить пароль</button>
+      <button class="link" id="logoutBtn">Выйти</button>
+      <a class="link" href="/" target="_blank" rel="noopener">Открыть сайт ↗</a>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="top"><h1 id="title">Панель</h1><div id="topActions"></div></header>
+    <section id="view"></section>
+  </main>
+</div>
+
+<div class="dlg-bg" id="dlgBg" hidden><div class="dlg" id="dlg"></div></div>
+<div class="toast" id="toast"></div>
+<script src="admin.js"></script>
+</body>
+</html>
