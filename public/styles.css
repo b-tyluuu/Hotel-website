@@ -320,3 +320,53 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opa
 
 @media(max-width:1000px){.stat+.stat{border-left:0}.stats{margin-top:20px}}
 @media(max-width:760px){.dark-section{padding:150px 5vw}.reviews .review-wrap{padding:54px 16px 36px}}
+
+/* ===== LIVING PHOTO BACKGROUND + READABLE GLASS PANELS ===== */
+:root{--muted:#54483b;--ink:#1d140d;--goldtxt:#8f5f25}
+body{background:#d9c7a8}
+.page-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#cdb894}
+.pb-slide{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transform:scale(1.02);transition:opacity 3s ease}
+.pb-slide.on{opacity:1;animation:kb 28s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.16) translate3d(-2.5%,-1.5%,0)}}
+.pb-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,226,180,.28),rgba(120,70,30,.22) 60%,rgba(60,35,15,.35))}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);mix-blend-mode:screen;opacity:.55}
+.o1{width:46vw;height:46vw;left:-12vw;top:8vh;background:radial-gradient(circle,rgba(255,196,110,.9),transparent 65%);animation:fl1 22s ease-in-out infinite alternate}
+.o2{width:38vw;height:38vw;right:-10vw;top:45vh;background:radial-gradient(circle,rgba(255,150,90,.75),transparent 65%);animation:fl2 28s ease-in-out infinite alternate}
+.o3{width:30vw;height:30vw;left:30vw;bottom:-12vw;background:radial-gradient(circle,rgba(255,225,160,.8),transparent 65%);animation:fl1 34s ease-in-out infinite alternate-reverse}
+@keyframes fl1{to{transform:translate(14vw,10vh) scale(1.25)}}
+@keyframes fl2{to{transform:translate(-16vw,-12vh) scale(1.2)}}
+.pb-mist{position:absolute;left:0;right:0;bottom:0;height:45%;width:200%;background:radial-gradient(ellipse 30% 60% at 25% 80%,rgba(255,240,215,.35),transparent 70%),radial-gradient(ellipse 28% 55% at 70% 85%,rgba(255,240,215,.3),transparent 70%);filter:blur(26px);animation:drift 70s linear infinite}
+
+/* hero photo fades straight into the page photo (no beige band) */
+.hero::after{display:none}
+.slides,.hero-overlay,.fx{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+
+/* content sits on frosted glass: crisp, high-contrast */
+.section{max-width:none;width:min(1360px,94vw);margin:70px auto;padding:90px 4vw;background:rgba(255,250,242,.86);backdrop-filter:blur(16px) saturate(1.1);-webkit-backdrop-filter:blur(16px) saturate(1.1);border:1px solid rgba(255,255,255,.55);border-radius:38px;box-shadow:0 30px 80px rgba(60,35,10,.28)}
+.dark-section{width:100%;margin:90px 0;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;background:none;padding:190px 5vw}
+.stats{background:rgba(255,250,242,.92);border:1px solid rgba(255,255,255,.6);box-shadow:0 30px 80px rgba(60,35,10,.28);margin-top:20px}
+.stat b{color:#a06f2e}.stat span{color:var(--muted);font-weight:500}
+.eyebrow.dark{color:var(--goldtxt);font-weight:600}
+.section-head h2{color:var(--ink)}
+.sub{color:var(--muted)}
+.section-head::after{width:170px;height:14px;margin-top:24px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='14'%3E%3Cpath d='M0 7H70M100 7H170' stroke='%23a06f2e' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M85 1l6 6-6 6-6-6z' fill='%23a06f2e'/%3E%3C/svg%3E") center/contain no-repeat}
+.dark-section .section-head::after{filter:brightness(1.5) saturate(.8)}
+.room{border:1px solid rgba(160,111,46,.28)}
+.specs{color:#54483b}
+.chip{border-color:rgba(160,111,46,.4);color:var(--ink)}
+.review-wrap{background:rgba(255,255,255,.7)}
+.review .who small{color:var(--muted)}
+.footer{position:relative}
+
+/* toast must never peek into view */
+.toast{opacity:0;visibility:hidden;pointer-events:none}
+.toast.show{opacity:1;visibility:visible}
+
+@media(max-width:760px){.section{width:96vw;margin:40px auto;padding:60px 5vw;border-radius:26px}.dark-section{padding:130px 5vw;width:100%;margin:60px 0;border-radius:0}}
+@media(prefers-reduced-motion:reduce){.pb-slide.on,.orb,.pb-mist{animation:none}}
+
+/* amenities heading: one warm gold tone, clearly visible on the dark photo */
+.dark-section .section-head h2,.dark-section .section-head h2 em{color:#f3d596;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.dark-section .eyebrow{color:#f3d596}
+.dark-section .sub{color:#f0e2c8}
+.dark-section .amen h3{color:#fff3da}

@@ -234,6 +234,14 @@ function confetti() {
   })();
 }
 
+
+/* living page background: slow zoom, crossfade between photos */
+(() => {
+  const sl = $$('.pb-slide'); if (!sl.length) return;
+  sl.forEach(e => { e.style.backgroundImage = `url(${heroUrl(e.dataset.img)})`; });
+  let k = 0; setInterval(() => { sl[k].classList.remove('on'); k = (k + 1) % sl.length; sl[k].classList.add('on'); }, 14000);
+})();
+
 /* init */
 loadRooms(); updateCount();
 addEventListener('load', () => setTimeout(() => $('#loader').classList.add('hide'), 700));
